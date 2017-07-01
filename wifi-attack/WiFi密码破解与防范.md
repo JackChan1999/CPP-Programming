@@ -173,3 +173,8 @@ service  network-manager start
 （2） 加密方式选择WPA2-PSK，密码不要设置常用面比如简单的123456aa这种。一般网上流传的密码字典会包括这种密码，所以很多常用字典可以轻易破解
 
 （3）密码难度稍微复杂一些，长度不要局限8位，即可。
+
+视频：http://pan.baidu.com/s/1hrY0qR6
+资料链接：http://pan.baidu.com/s/1cecjZC 密码：rn7i
+直播视频链接：
+http://v.youku.com/v_show/id_XMTY3OTgyNjY2NA==.html 
