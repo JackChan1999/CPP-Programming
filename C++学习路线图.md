@@ -130,3 +130,21 @@ https://pan.baidu.com/s/1nvGx5aT#list/path=%2F
 | 以上全部面试资源合并下载   | [https://pan.baidu.com/s/1bpj3v6B](https://pan.baidu.com/s/1bpj3v6B?cazn) |
 
 数据结构：https://pan.baidu.com/s/1mhKjwZQ#list/path=%2F
+
+传智扫地僧王保明
+
+## 网盘资料
+
+最适合自学的C语言基础视频配套资料
+http://pan.baidu.com/s/1slrKjJB
+链接：http://pan.baidu.com/s/1geEjZsZ 密码：vius
+最适合自学的C++基础视频_深入浅出版全套资料
+视频链接  http://pan.baidu.com/s/1skNXZnZ
+链接：http://pan.baidu.com/s/1eRZQFmU 密码：c1tp
+
+指针标准和知识体系搭建 
+<http://pan.baidu.com/s/1kV6SoIz>
+链接：http://pan.baidu.com/s/1kUKjpkz 密码：pbrh
+指针和链表在项目开发中的实战应用    
+<http://pan.baidu.com/s/1sl0Az7Z>   
+链接：http://pan.baidu.com/s/1c2IBO56 密码：7twl
