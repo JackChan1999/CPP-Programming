@@ -1,0 +1,200 @@
+## 数组模板类
+
+### 头文件
+
+```C++
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class MyVector
+{
+	friend ostream & operator<< <T>(ostream &out,  const MyVector &obj);
+public:
+	MyVector(int size = 0);  //构造函数
+	MyVector(const MyVector &obj); // 拷贝构造函数
+	~MyVector(); //析构函数
+
+public:
+	T& operator[] (int index);
+	// a3 = a2 = a1;
+	MyVector &operator=(const MyVector &obj);
+public:
+	int getLen()
+	{
+		return m_len;
+	}
+protected:
+	T *m_space;
+	int m_len;
+};
+```
+### 实现类
+
+```C++
+#include <iostream>
+using namespace std;
+#include "MyVector.h"
+
+template <typename T>
+ostream & operator<<(ostream &out,  const MyVector<T> &obj)
+{
+	for (int i=0; i<obj.m_len; i++)
+	{
+		out << obj.m_space[i] << " ";
+		//out << t1;
+	}
+	out << endl;
+	return out;
+}
+
+//MyVector<int> myv1(10);
+template <typename T>
+MyVector<T>::MyVector(int size)  //构造函数
+{
+	m_space = new T[size];
+	m_len = size;
+}
+
+//MyVector<int> myv2  = myv1;
+template <typename T>
+MyVector<T>::MyVector(const MyVector &obj) // 拷贝构造函数
+{
+	//根据myv1的大小分配内存
+	m_len = obj.m_len;
+	m_space = new T[m_len];
+	//copy数据
+	for (int i=0; i<m_len; i++)
+	{
+		m_space[i] = obj.m_space[i];
+	}
+}
+
+template <typename T>
+MyVector<T>::~MyVector() //析构函数
+{
+	if (m_space != NULL)
+	{
+		delete [] m_space;
+		m_space = NULL;
+		m_len = 0;
+	}
+}
+
+template <typename T>
+T& MyVector<T>::operator[] (int index)
+{
+	return m_space[index];
+}
+
+// a3 = a2 = a1;
+template <typename T>
+MyVector<T> &  MyVector<T>::operator=(const MyVector<T> &obj)
+{
+	//先把a2的旧的内存释放掉
+	if (m_space != NULL)
+	{
+		delete[] m_space;
+		m_space = NULL;
+		m_len = 0;
+	}
+	//根据a1分配内存 
+	m_len = obj.m_len;
+	m_space = new T[m_len];
+	//copy数据
+	for (int i=0; i<m_len; i++)
+	{
+		m_space[i] = obj[i];
+	}
+	return *this;  // a2 = a1; 返回给a2 的自身
+}
+```
+### 测试
+
+```C++
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+#include "MyVector.cpp"
+
+//1  优化Teacher类, 属性变成 char *panme, 购置函数里面 分配内存
+//2  优化Teacher类,析构函数 释放panme指向的内存空间
+//3  优化Teacher类,避免浅拷贝 重载= 重写拷贝构造函数 
+//4  优化Teacher类,在Teacher增加 << 
+//5  在模板数组类中,存int char Teacher Teacher*(指针类型)
+
+//=====>stl 容器的概念 
+
+class Teacher
+{
+public:
+	Teacher()
+	{
+		age = 33;
+		strcpy(name, "");
+	}
+
+	Teacher(char *name, int age)
+	{
+		this->age = age;
+		strcpy(this->name, name);
+	}
+	void printT()
+	{
+		cout << name << ", " << age << endl;
+	}
+private:
+	int age;
+	//char name[32];
+	char *pName2;
+};
+
+void main()
+{
+	Teacher t1("t1", 31), t2("t2", 32), t3("t3", 33), t4("t4", 34);
+	MyVector<Teacher> tArray(4);
+	tArray[0] = t1;
+	tArray[1] = t2;
+	tArray[2] = t3;
+	tArray[3] = t4;
+
+	for (int i=0; i<4; i++)
+	{
+		Teacher tmp = tArray[i];
+		tmp.printT();
+	}
+	cout << tArray;
+	system("pause");
+}
+void main02()
+{
+	MyVector<char> myv1(10);
+	myv1[0] = 'a';
+	myv1[1] = 'b';
+	myv1[2] = 'c';
+	myv1[3] = 'd';
+	cout << myv1;
+	system("pause");
+}
+
+void main01()
+{
+	MyVector<int> myv1(10);
+	for (int i=0; i<myv1.getLen(); i++)
+	{
+		myv1[i] = i+1;
+		cout << myv1[i] << " ";
+	}
+	cout << endl;
+
+	MyVector<int> myv2  = myv1;
+	for (int i=0; i<myv2.getLen(); i++)
+	{
+		cout << myv2[i] << " ";
+	}
+	cout << myv2 << endl;
+	cout<<"hello..."<<endl;
+	system("pause");
+	return ;
+}
+```
