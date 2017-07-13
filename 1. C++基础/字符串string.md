@@ -1,3 +1,15 @@
+## 用string定义字符串
+
+```C++
+#include<string>
+
+string s1;
+s1 = "hello world";
+string s2 = "hello C++";
+string s3("are you ok");
+string s4(6,'a'); // s4 = "aaaaaa"
+```
+
 ## string常用函数
 
 | 函数声明            | 功能描述            |
@@ -24,3 +36,4 @@
 | compare()       | 比较字符串           |
 | append()        | 追加字符或字符串        |
 | push_back()     | 追加字符或字符串        |
+| swap()          | 交换两个字符串的值       |
