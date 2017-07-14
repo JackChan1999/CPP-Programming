@@ -1,0 +1,265 @@
+### set/multiset的简介
+- set是一个集合容器，其中所包含的元素是唯一的，集合中的元素按一定的顺序排列。元素插入过程是按排序规则插入，所以不能指定插入位置。
+- set采用红黑树变体的数据结构实现，红黑树属于平衡二叉树。在插入操作和删除操作上比vector快。
+- set不可以直接存取元素。（不可以使用at.(pos)与[]操作符）。
+- multiset与set的区别：set支持唯一键值，每个元素值只能出现一次；而multiset中同一值可以出现多次。
+- 不可以直接修改set或multiset容器中的元素值，因为该类容器是自动排序的。如果希望修改一个元素值，必须先删除原有的元素，再插入新的元素。
+- \#include <set>  
+### set/multiset对象的默认构造
+```c++
+set<int> setInt;            //一个存放int的set容器。
+set<float> setFloat;     //一个存放float的set容器。
+set<string> setString;     //一个存放string的set容器。
+multiset<int> mulsetInt;            //一个存放int的multi set容器。
+multi set<float> multisetFloat;     //一个存放float的multi set容器。
+multi set<string>multisetString;     //一个存放string的multi set容器。
+```
+### set的插入与迭代器
+
+| 函数声明         | 功能描述                 |
+| ------------ | -------------------- |
+| insert(elem) | 在容器中插入元素             |
+| begin()      | 返回容器中第一个数据的迭代器       |
+| end()        | 返回容器中最后一个数据之后的迭代器    |
+| rbegin()     | 返回容器中倒数第一个元素的迭代器     |
+| rend()       | 返回容器中倒数最后一个元素的后面的迭代器 |
+
+```c++
+  set<int> setInt;
+  setInt.insert(3);setInt.insert(1);setInt.insert(5);setInt.insert(2);
+  for(set<int>::iteratorit=setInt.begin(); it!=setInt.end(); ++it)
+  {
+     int iItem = *it;
+     cout << iItem;    //或直接使用cout<< *it
+  }
+  //这样子便顺序输出  1 2 3 5。
+  set.rbegin()与set.rend()
+```
+### Set集合的元素排序
+- set&lt;int,less&lt;int> > setIntA;  //该容器是按升序方式排列元素。
+- set&lt;int,greater&lt;int>> setIntB;   //该容器是按降序方式排列元素。
+- set&lt;int> 相当于 set&lt;int,less&lt;int>>。
+- less<int>与greater<int>中的int可以改成其它类型，该类型主要要跟set容纳的数据类型一致。
+- 疑问1：less&lt;>与greater&lt;>是什么？
+- 疑问2：如果set&lt;>不包含int类型，而是包含自定义类型，set容器如何排序？
+- 要解决如上两个问题，需要了解容器的函数对象，也叫伪函数，英文名叫functor。
+- 下面将讲解什么是functor，functor的用法。
+  使用stl提供的函数对象
+```c++
+  set<int,greater<int>>setIntB;   
+  setIntB.insert(3);
+  setIntB.insert(1);
+  setIntB.insert(5);
+  setIntB.insert(2);
+```
+  此时容器setIntB就包含了按顺序的5,3,2,1元素
+### 函数对象functor的用法
+- 尽管函数指针被广泛用于实现函数回调，但C++还提供了一个重要的实现回调函数的方法，那就是函数对象。
+- functor，翻译成函数对象，伪函数，算符，是重载了“()”操作符的普通类对象。从语法上讲，它与普通函数行为类似。
+- greater<>与less<>就是函数对象。
+
+下面举出greater<int>的简易实现原理。
+
+```C++
+struct greater
+{
+	bool operator()( const int & iLeft, const int & iRight )
+	{
+		return(iLeft > iRight); // 如果是实现less<int>的话，这边是写return(iLeft<iRight);
+	}
+}
+```
+
+  容器就是调用函数对象的operator()方法去比较两个值的大小。
+
+  题目：学生包含学号，姓名属性，现要求任意插入几个学生对象到set容器中，使得容器中的学生按学号的升序排序。
+
+```c++
+class CStudent // 学生类
+{
+public:
+	CStudent( intiID, string strName )
+	{
+		m_iID		= iID;
+		m_strName	= strName;
+	}
+
+	int	m_iID; // 学号
+	string	m_strName; // 姓名
+}
+
+// 为保持主题鲜明，本类不写拷贝构造函数，不类也不需要写拷贝构造函数。但大家仍要有考虑拷贝构造函数的习惯。
+struct StuFunctor // 函数对象
+{
+	booloperator() ( const CStudent &stu1, const CStudent &stu2 )
+	{
+		return(stu1.m_iID < stu2.m_iID);
+	}
+}
+
+void main()
+{
+	set<CStudent, StuFunctor> setStu;
+	setStu.insert( CStudent( 3, "小张" ) );
+	setStu.insert( CStudent( 1, "小李" ) );
+	setStu.insert( CStudent( 5, "小王" ) );
+	setStu.insert( CStudent( 2, "小刘" ) );
+	// 此时容器setStu包含了四个学生对象，分别是按姓名顺序的“小李”，“小刘”，“小张”，“小王”
+}
+```
+
+### set对象的拷贝构造与赋值
+```c++
+set(const set &st);                //拷贝构造函数
+set& operator=(const set &st);        //重载等号操作符
+set.swap(st);                                //交换两个集合容器
+set<int>setIntA;
+setIntA.insert(3);
+setIntA.insert(1);
+setIntA.insert(7);
+setIntA.insert(5);
+setIntA.insert(9);
+set<int>setIntB(setIntA);  //1 3 5 7 9
+     
+set<int>setIntC;
+setIntC= setIntA;              //1 3 5 7 9
+setIntC.insert(6);
+setIntC.swap(setIntA);       //交换
+```
+
+### set的大小
+- set.size();    //返回容器中元素的数目
+- set.empty();//判断容器是否为空
+
+```c++
+set<int>setIntA;
+setIntA.insert( 3 );
+setIntA.insert( 1 );
+setIntA.insert( 7 );
+setIntA.insert( 5 );
+setIntA.insert( 9 );
+if ( !setIntA.empty() )
+{
+	intiSize = setIntA.size(); // 5
+}
+```
+### set的删除
+
+| 方法声明           | 功能说明                             |
+| -------------- | -------------------------------- |
+| clear()        | 清除所有元素                           |
+| erase(pos)     | 删除pos迭代器所指的元素，返回下一个元素的迭代器        |
+| erase(beg,end) | 删除区间[beg,end)的所有元素  ，返回下一个元素的迭代器 |
+| erase(elem)    | 删除容器中值为elem的元素                   |
+
+删除区间内的元素
+
+setInt是用set<int>声明的容器，现已包含按顺序的1,3,5,6,9,11元素。
+set<int>::iteratoritBegin=setInt.begin();
+++ itBegin;
+set<int>::iteratoritEnd=setInt.begin();
+++ itEnd;
+++ itEnd;
+++ itEnd;
+setInt.erase(itBegin,itEnd);
+//此时容器setInt包含按顺序的1,6,9,11四个元素。
+删除容器中第一个元素
+setInt.erase(setInt.begin());             //6,9,11
+删除容器中值为9的元素
+set.erase(9);    
+删除setInt的所有元素
+setInt.clear();                     //容器为空
+
+### set的查找
+
+| 函数声明              | 功能描述                                     |
+| ----------------- | ---------------------------------------- |
+| find(elem)        | 查找elem元素，返回指向elem元素的迭代器                  |
+| count(elem)       | 返回容器中值为elem的元素个数。对set来说，要么是0，要么是1。对multiset来说，值可能大于1 |
+| lower_bound(elem) | 返回第一个>=elem元素的迭代器                        |
+| upper_bound(elem) | 返回第一个>elem元素的迭代器                         |
+| equal_range(elem) | 返回容器中与elem相等的上下限的两个迭代器。上限是闭区间，下限是开区间，如[beg,end) |
+
+- 以上函数返回两个迭代器，而这两个迭代器被封装在pair中。
+- 以下讲解pair的含义与使用方法。
+```c++
+  set<int>setInt;
+  setInt.insert(3);
+  setInt.insert(1);
+  setInt.insert(7);
+  setInt.insert(5);
+  setInt.insert(9);
+  set<int>::iteratoritA = setInt.find(5);
+  intiA = *itA;              //iA == 5
+  intiCount = setInt.count(5);    //iCount == 1
+  set<int>::iteratoritB = setInt.lower_bound(5);
+  set<int>::iteratoritC = setInt.upper_bound(5);
+  intiB = *itB;     //iB == 5
+         intiC = *itC; //iC == 7
+  pair<set<int>::iterator, set<int>::iterator > pairIt =setInt.equal_range(5);  //pair是什么？
+```
+### pair的使用
+- pair译为对组，可以将两个值视为一个单元。
+- pair<T1,T2>存放的两个值的类型，可以不一样，如T1为int，T2为float。T1,T2也可以是自定义类型。
+  ² pair.first是pair里面的第一个值，是T1类型。
+  ² pair.second是pair里面的第二个值，是T2类型。
+  set<int> setInt;
+  ... //往setInt容器插入元素1,3,5,7,9
+  pair< set<int>::iterator ,set<int>::iterator > pairIt = setInt.equal_range(5);
+  set<int>::iteratoritBeg = pairIt.first;
+  set<int>::iteratoritEnd = pairIt.second;
+  //此时 *itBeg==5  而  *itEnd == 7
+### 小结
+- 容器set/multiset的使用方法；
+  红黑树的变体，查找效率高，插入不能指定位置，插入时自动排序。
+
+- functor的使用方法；
+  类似于函数的功能，可用来自定义一些规则，如元素比较规则。
+
+- pair的使用方法。
+  对组，一个整体的单元，存放两个类型(T1,T2，T1可与T2一样)的两个元素。
+
+### 案例
+
+```c++
+int x;
+scanf( "%ld", &x );
+multiset<int>h; // 建立一个multiset类型，变量名是h，h序列里面存的是int类型,初始h为空
+while ( x != 0 )
+{
+	h.insert( x ); // 将x插入h中
+	scanf( "%ld", &x );
+}
+pair< multiset<int>::iterator, multiset<int>::iterator > pairIt = h.equal_range( 22 );
+multiset<int>::iteratoritBeg	= pairIt.first;
+multiset<int>::iteratoritEnd	= pairIt.second;
+int	nBeg	= *itBeg;
+int	nEnd	= *itEnd;
+while ( !h.empty() )                            // 序列非空h.empty()==true时表示h已经空了
+{
+	multiset<int>::iterator c = h.begin();  // c指向h序列中第一个元素的地址，第一个元素是最小的元素
+	printf( "%ld", *c );                    // 将地址c存的数据输出
+	h.erase( c );                           // 从h序列中将c指向的元素删除
+}
+```
+### 常用函数
+
+| 方法声明              | 功能说明                                     |
+| ----------------- | ---------------------------------------- |
+| size()            | 返回容器中元素的数目                               |
+| max_size()        | 返回容器的容量                                  |
+| empty()           | 判断容器是否为空                                 |
+| insert()          | 在容器中插入元素                                 |
+| begin()           | 返回容器中第一个数据的迭代器                           |
+| end()             | 返回容器中最后一个数据之后的迭代器                        |
+| rbegin()          | 返回容器中倒数第一个元素的迭代器                         |
+| rend()            | 返回容器中倒数最后一个元素的后面的迭代器                     |
+| find(elem)        | 查找elem元素，返回指向elem元素的迭代器                  |
+| count(elem)       | 返回容器中值为elem的元素个数。对set来说，要么是0，要么是1。对multiset来说，值可能大于1 |
+| lower_bound(elem) | 返回第一个>=elem元素的迭代器                        |
+| upper_bound(elem) | 返回第一个>elem元素的迭代器                         |
+| equal_range(elem) | 返回容器中与elem相等的上下限的两个迭代器。上限是闭区间，下限是开区间，如[beg,end) |
+| clear()           | 清除所有元素                                   |
+| erase(pos)        | 删除pos迭代器所指的元素，返回下一个元素的迭代器                |
+| erase(beg,end)    | 删除区间[beg,end)的所有元素  ，返回下一个元素的迭代器         |
+| erase(elem)       | 删除容器中值为elem的元素                           |

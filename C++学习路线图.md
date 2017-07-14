@@ -2,7 +2,7 @@
 typora-copy-images-to: images
 ---
 
-http://www.itheima.com/news/20170414/182102.html
+[2016年最新C/C++学习路线图（附完整视频资源）](http://www.itheima.com/news/20170414/182102.html)
 
 http://c.itheima.com/?v2
 
