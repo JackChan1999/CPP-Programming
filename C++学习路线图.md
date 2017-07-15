@@ -148,3 +148,62 @@ http://pan.baidu.com/s/1slrKjJB
 指针和链表在项目开发中的实战应用    
 <http://pan.baidu.com/s/1sl0Az7Z>   
 链接：http://pan.baidu.com/s/1c2IBO56 密码：7twl
+
+## 经典书籍
+
+- Stan Lippman《C++ Primer》
+- C++之父Bjarne Stroustrup的代表作《The C++ Programming Language》
+- Effective C++：改善程序与设计的55个具体做法
+- More Effective C++：35个改善编程与设计的有效方法
+- Effective Modern C++：改善C++11和C++14的42个具体做法
+- 泛型编程与STL
+- C++编程规范
+
+## 优秀博客
+
+- http://zhedahht.blog.163.com
+
+本博客讨论程序员面试题，并主要集中在C/C++、数据结构算法和算法上。
+
+微软、Google等面试题，剑指Offer：名企面试官精讲典型编程题
+
+- http://saturnman.blog.163.com
+
+saturnman大牛的博客
+
+- [陈皓的酷壳 coolshell](http://coolshell.cn/)
+- [陈硕的blog](http://blog.csdn.net/Solstice)
+- [刘未鹏 | Mind Hacks](http://mindhacks.cn/)
+- [胖子](http://88154873.qzone.qq.com)                
+- [bluewanderer](http://hi.baidu.com/bluewanderer)   
+- [saturnman](http://saturnman.blog.163.com)       
+- [July](http://blog.sina.com.cn/shitou009)                
+- [锦衣卫青龙](http://blog.sina.com.cn/zhijun0926)       
+- [我的新浪博客]( http://blog.sina.com.cn/rollenholt )             
+- [门徒](http://blog.sina.com.cn/cenaczx)                   
+- [Ambition](http://blog.sina.com.cn/whitedream0109) 
+
+amb教主,我只能仰望，再给我半年时间，才有希望平视
+
+[MiYu](http://www.baiyun.me/)：和哥是一个等级的…最近被赶超了，追赶中
+
+[大帅](http://www.cnblogs.com/newwy/)：大帅，你暂时在YM哥吗？
+
+[rakerichard](http://www.cppblog.com/rakerichard)：小神牛，很有思想
+
+[Roowe](http://www.iroowe.com/)：人称萝莉….喜欢流口水
+
+[chinazhangjie](http://www.cnblogs.com/chinazhangjie/)：C++学的很好，也给了我很多建议，先感谢，后Orz
+
+[愤怒的脚毛](http://www.hantayi.com/)：Windows API 小神，致敬。
+
+[小球球](http://www.loveqiuqiu.com/)：ACM大神兼小美女。球教主V5。
+
+[汇编高手](http://blog.csdn.net/paullbm) 
+
+几位神牛：
+
+- [Matrix67大牛](http://www.matrix67.com/blog/)  给我的感觉就是诗意的数学家
+- [Pongba 大牛](http://mindhacks.cn/)  哲学大牛和编程大牛的集合体
+- [Notonlysuccess大牛](http://www.notonlysuccess.com/)  杭电的队长，无限Orz
+- [云风大牛](http://blog.codingnow.com/)  网易开发游戏的第一大将
