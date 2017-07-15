@@ -132,6 +132,11 @@ vector.back() = 19;   //vecInt包含{11,3,8,7,19}
 
 目前本系列教程所用到的容器，都支持双向迭代器或随机访问迭代器，下面将会详细介绍这两个类别的迭代器。
 
+- iterator
+- const_iterator 只读迭代器
+- reverse_iterator 逆向迭代器
+- const_reverse_iterator 只读逆向迭代器
+
 ### 双向迭代器与随机访问迭代器
 
 双向迭代器支持的操作：it++, ++it, it--, --it，*it, itA = itB, itA == itB, itA != itB
