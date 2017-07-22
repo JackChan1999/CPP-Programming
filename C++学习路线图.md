@@ -12,6 +12,8 @@ http://bbs.itheima.com/thread-338418-1-1.html
 
 http://bbs.itheima.com/thread-328197-1-1.html
 
+[IT教程网--中国高清视频教程下载第一门户站](http://www.itjiaocheng.com/)
+
 ![](images/学习线路图.jpg)
 
 ![](images/C++学习线路图.jpg)
@@ -158,6 +160,10 @@ http://pan.baidu.com/s/1slrKjJB
 - Effective Modern C++：改善C++11和C++14的42个具体做法
 - 泛型编程与STL
 - C++编程规范
+- c primer plus 第6版
+- C语言深度解剖 解开程序员面试笔记的秘密
+- 嵌入式Linux与物联网软件开发 C语言内核深度解析
+- C语言接口与实现
 
 ## 优秀博客
 

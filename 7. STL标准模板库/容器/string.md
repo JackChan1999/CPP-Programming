@@ -173,6 +173,15 @@ string &insert(int pos, int n, charc);  //在pos位置 插入n个字符c
 string &erase(int pos=0, intn=npos);  //删除pos开始的n个字符，返回修改后的字符串
 ```
 
+### 数值转换
+
+| 函数声明        | 功能描述         |
+| ----------- | ------------ |
+| to_string() | 将整数转换为字符表示形式 |
+| stod()      | 将字符串转换为浮点数   |
+
+![1500134641963](images/1500134641963.png)
+
 ### string算法相关
 
 ```c++
