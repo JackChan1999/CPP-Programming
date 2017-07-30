@@ -10,6 +10,24 @@ string s3("are you ok");
 string s4(6,'a'); // s4 = "aaaaaa"
 ```
 
+## 去空格
+
+```C++
+void  trim(char *str)
+{
+	int i = 0;
+	int j = 0;
+	while (( *(str+i) = *(str+j++))!='\0')
+	{
+		if (*(str + i)!=' ')
+		{
+			i++;
+		}
+	}
+	//两个下标轮替，往前移动，链表的算法一样，循环向前挖
+}
+```
+
 ## string常用函数
 
 | 函数声明            | 功能描述            |

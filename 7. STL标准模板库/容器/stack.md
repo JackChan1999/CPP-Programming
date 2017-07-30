@@ -88,3 +88,26 @@ if(!stkIntA.empty())
 | top()   | 获取栈顶元素  |
 | empty() | 判断栈是否为空 |
 | size()  | 获取栈的大小  |
+
+### 十进制转二进制
+
+除2取余数法
+
+```C++
+void main()
+{
+	int num;
+	cin >> num;
+	stack<int> mystack;
+	for ( ;num;num/=2)
+	{
+		mystack.push(num % 2);
+	}
+	while (!mystack.empty())
+	{
+		int num=mystack.top();
+		std::cout << num << " ";
+		mystack.pop();
+	}
+}
+```

@@ -14,6 +14,18 @@ http://bbs.itheima.com/thread-328197-1-1.html
 
 [IT教程网--中国高清视频教程下载第一门户站](http://www.itjiaocheng.com/)
 
+传智播客C++第五期，链接: http://pan.baidu.com/s/1jGgiZgM 密码: r04s，解压密码：www.lthack.com
+
+传智播客C++第五期无加密版，链接: http://pan.baidu.com/s/1miRGsLa 密码: x6e2
+
+2015智锋互联---尹成c、c++ 第一期培训视频课程（一共214G）
+
+链接：http://pan.baidu.com/s/1hsx7O5u 密码：9cey
+
+2015智锋互联C C++ 一期培训，http://pan.baidu.com/s/1i399aiL 密码：niie
+
+IT教程（260G）：https://pan.baidu.com/s/1miwEqTU
+
 ![](images/学习线路图.jpg)
 
 ![](images/C++学习线路图.jpg)
@@ -213,3 +225,15 @@ amb教主,我只能仰望，再给我半年时间，才有希望平视
 - [Pongba 大牛](http://mindhacks.cn/)  哲学大牛和编程大牛的集合体
 - [Notonlysuccess大牛](http://www.notonlysuccess.com/)  杭电的队长，无限Orz
 - [云风大牛](http://blog.codingnow.com/)  网易开发游戏的第一大将
+
+## 项目展示
+
+传智播客 C/C++学院项目展示，智播客学院
+
+- [C 学院项目展示——传智学员开发的QQ十亿数据索引](http://v.youku.com/v_show/id_XNzkzMzY1OTg0.html)
+- [C 学院项目展示——王宁老师的人脸系别系统](http://v.youku.com/v_show/id_XNzkzMzU4OTcy.html )
+- [C 学院项目展示——薛国良老师教你如何劫持百度](http://v.youku.com/v_show/id_XNzkzMzUxNTky.html)
+- [C 学院项目展示——朱景尧老师叫你如何快速查询开房记录](http://v.youku.com/v_show/id_XNzkzMzUxNTc2.html)
+- [C 学院项目展示——王桂林老师教你制作妹纸的3D桌面](http://v.youku.com/v_show/id_XNzkzMzUxNTQ4.html)
+
+项目实战-中国象棋：http://pan.baidu.com/s/1bpHPEk3，fgq4
