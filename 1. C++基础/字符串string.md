@@ -55,3 +55,19 @@ void  trim(char *str)
 | append()        | 追加字符或字符串        |
 | push_back()     | 追加字符或字符串        |
 | swap()          | 交换两个字符串的值       |
+
+## 转义字符 R”()”
+
+```C++
+#include <iostream>  
+#include<string>  
+#include<stdlib.h>  
+
+void main()  
+{  
+    std::string path =R"( "C:\Program Files\Tencent\QQ\QQProtect\Bin\QQProtect.exe")";  
+    //R"()"   括号之间去掉转义字符  
+    system(path.c_str());  
+    system("pause");  
+}
+```

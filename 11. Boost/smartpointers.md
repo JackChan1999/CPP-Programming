@@ -1,3 +1,43 @@
+## 智能指针
+
+```C++
+#include <iostream>  
+  
+void main1()  
+{  
+    //auto_ptr; C++98
+    for (int i = 0; i < 10000000; i++)  
+    {  
+        double *p = new double;//为指针分配内存  
+        std::auto_ptr<double> autop(p);
+        //创建智能指针管理指针p指向的内存
+        //智能指针   
+        //delete p;  
+    }  
+  
+    std::cin.get();  
+}
+```
+
+C++11智能指针
+
+```C++
+#include<iostream>  
+#include<memory>//内存  
+  
+void main()  
+{  
+    for (int i = 0; i < 10000000;i++)  
+    {  
+        //新型指针，新型的数组        
+        std::unique_ptr<double> pdb(new double);  
+        //double *p = new double;  
+    }  
+  
+    std::cin.get();  
+}
+```
+
 ## smartpointers库
 
 智能指针的原理基于一个常见的习语叫做 RAII ：资源申请即初始化。 智能指针只是这个习语的其中一例——当然是相当重要的一例。 智能指针确保在任何情况下，动态分配的内存都能得到正确释放，从而将开发人员从这项任务中解放了出来。 这包括程序因为异常而中断，原本用于释放内存的代码被跳过的场景。 用一个动态分配的对象的地址来初始化智能指针，在析构的时候释放内存，就确保了这一点。 因为析构函数总是会被执行的，这样所包含的内存也将总是会被释放。
