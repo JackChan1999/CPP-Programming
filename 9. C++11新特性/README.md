@@ -2,6 +2,50 @@
 typora-copy-images-to: images
 ---
 
+## 右值引用
+
+新标准中引入了新的引用类型-右值引用（rvalue reference），以便对将要销毁的对象信息进行保留。所谓右值引用，就是应该绑定到右值的引用，使用“&&”定义右值引用：
+
+```c++
+int i = 10;
+int &r = i;       //正确，左值引用
+int &&rr = i;     //错误，定义了右值引用，但初值是左值
+
+int &r2 = i * 42; //错误，定义了左值引用，但初值是右值
+const int &r3 = i * 42;//正确，可以将一个const引用绑定到右值上
+int &&rr2 = i * 42; 
+```
+
+## 委托构造函数
+
+C++11新标准定义了委托构造函数，扩展了构造函数对数据成员初始化的方法。
+
+所谓委托构造就是让类中的某个构造函数去委托另一个构造函数执行构造操作的机制。一个委托构造函数使用它所属类的其他构造函数执行自己的初始化过程。
+
+## 继承构造函数
+
+在继承结构中，派生类构造函数需要调用基类构造函数完成基类数据成员的初始化，即使派生类中没有数据需要初始化仍然需要定义构造函数用于向基类构造函数传递数据。
+
+C++11新标准中提供了继承构造函数，使得派生类中可以直接使用基类的构造函数。
+
+## override关键字
+
+C++11新标准中可以使用override关键字来说明派生类中的虚函数，借助于编译器检查派生类是否覆盖基类的同名虚函数。
+
+## final关键字
+
+除了override，C++11新标准还增加了防止基类被继承和防止派生类重写函数的功能。这是由特殊的标识符final来完成的，其方法是在类名后或函数参数后添加关键字final。
+
+## 静态断言
+
+C++11中引入了static_assert关键字，用来实现编译时断言，称为静态断言。静态断言的语法格式如下所示：
+
+```
+static_assert(常量表达式， 提示字符串);
+```
+
+编译时首先检测“常量表达式”的值，若为真，则static_assert()不做任何操作，程序继续完成编译，若为假，产生一条编译错误，错误提示为静态断言中第二个参数给出的字符串信息。
+
 ## 多元数组 tuple
 
 ![1500136771914](images/1500136771914.png)
@@ -36,55 +80,6 @@ void main()
 
 ## bitset
 
-## auto自动变量
-
-C++11中引入的auto主要有两种用途：自动类型推断和返回值占位。auto在C++98中的标识临时变量的语义，由于使用极少且多余，在C++11中已被删除。前后两个标准的auto，完全是两个概念。
-
-### 自动类型推断
-
-auto自动类型推断，用于从初始化表达式中推断出变量的数据类型。通过auto的自动类型推断，可以大大简化我们的编程工作。下面是一些使用auto的例子。
-
-auto自动变量自动根据类型创建数据
-
-```C++
-#include <iostream>  
-#include<stdlib.h>  
-  
-void main()  
-{  
-    double db = 10.9;  
-    double *pdb = &db;  
-    auto num = pdb;//通用传入接口  
-    std::cout << typeid(db).name() << std::endl;  
-    std::cout << typeid(num).name() << std::endl;  
-    std::cout << typeid(pdb).name() << std::endl;  
-    //typeid(db).name()  db2;  
-    decltype(db) numA(10.9);//通用的备份接口  
-    std::cout << sizeof(numA) <<"    "<< numA << std::endl;  
-  
-    system("pause");  
-}  
-```
-### auto与函数模板
-
-```C++
-//自动数据类型，根据实际推导出类型，  
-template<class T1,class T2>//根据类型获取类型  
-auto get(T1 data, T2 bigdata)->decltype(data *bigdata)  
-{  
-    return  data*bigdata;  
-}  
-
-void main()  
-{  
-    std::cout << typeid(get(12.0, 'A')).name() << std::endl;  
-    std::cout << get(12.0, 'A') << std::endl;  
-    std::cout << typeid(get(12, 'A')).name() << std::endl;  
-    std::cout << get(12, 'A') << std::endl;  
-  
-    system("pause");  
-} 
-```
 ## 智能指针
 
 ```C++

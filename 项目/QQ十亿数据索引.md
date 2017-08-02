@@ -24,7 +24,6 @@ struct qqinfo
 	char passwd[20];
 };
 
-
 //获取有效行数
 int getlines()
 {
