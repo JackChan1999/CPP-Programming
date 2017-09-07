@@ -2,16 +2,16 @@
 
 - queue是队列容器，是一种“先进先出”的容器。
 - queue是简单地装饰deque容器而成为另外的一种容器。
-- \#include <queue>  
+- \#include&lt;queue>  
 
 ### queue对象的默认构造
 
 queue采用模板类实现，queue对象的默认构造形式：`queue<T>queT;` 如：
 
 ```c++
-queue<int> queInt;            //一个存放int的queue容器。
+queue<int> queInt;         //一个存放int的queue容器。
 queue<float> queFloat;     //一个存放float的queue容器。
-queue<string> queString;     //一个存放string的queue容器。
+queue<string> queString;   //一个存放string的queue容器。
 ...                                     
 //尖括号内还可以设置指针类型或自定义类型。
 ```
@@ -20,7 +20,7 @@ queue<string> queString;     //一个存放string的queue容器。
 
 ```c++
 queue.push(elem);   //往队尾添加元素
-queue.pop();   //从队头移除第一个元素
+queue.pop();        //从队头移除第一个元素
 queue<int> queInt;
 queInt.push(1);
 queInt.push(3);

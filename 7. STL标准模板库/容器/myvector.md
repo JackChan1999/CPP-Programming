@@ -2,7 +2,7 @@
 
 ### myvector.h
 
-```C++
+```c++
 #pragma once  
   
 template <class T>  
@@ -29,7 +29,7 @@ public:
 
 ### myvector.cpp
 
-```C++
+```c++
 #include "myvector.h"  
   
 template <class T>  
@@ -224,7 +224,7 @@ T myvector<T>::operator [](int i)
 
 ### main.cpp
 
-```C++
+```c++
 #include <iostream>  
 #include<stdlib.h>  
 #include <vector>  

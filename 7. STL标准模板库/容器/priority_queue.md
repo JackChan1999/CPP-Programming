@@ -13,13 +13,13 @@ pq.pop()
 pq.push(item)
 ```
 
-```C++
+```c++
 #include <iostream>
 using namespace std;
 #include "queue"
 void main81()
 {
-	priority_queue<int> p1; // 默认是 最大值优先级队列
+	priority_queue<int> p1; // 默认是最大值优先级队列
 	// priority_queue<int,vector<int>, less<int> > p1; //相当于这样写
 	priority_queue<int, vector<int>, greater<int> > p2; // 最小值优先级队列
 	p1.push( 33 );

@@ -16,7 +16,7 @@ vector采用模板类实现，vector对象的默认构造形式
 vector<T> vecT; 
 vector<int> vecInt;          //一个存放int的vector容器。
 vector<float> vecFloat;      //一个存放float的vector容器。
-vector<string> vecString;     //一个存放string的vector容器。
+vector<string> vecString;    //一个存放string的vector容器。
 ...   //尖括号内还可以设置指针类型或自定义类型。
 Class CA{};
 vector<CA*> vecpCA; //用于存放CA对象的指针的vector容器。
@@ -73,12 +73,12 @@ vecIntA.swap(vecIntD);
   例如  
 
 ```c++
-vecInt是vector<int>  声明的容器，现已包含1,2,3元素。
-int iSize = vecInt.size();              //iSize == 3;
+// vecInt是vector<int>  声明的容器，现已包含1,2,3元素。
+int iSize = vecInt.size();           //iSize == 3;
 bool bEmpty = vecInt.empty();        // bEmpty == false;
-执行vecInt.resize(5);  //此时里面包含1,2,3,0,0元素。
-再执行vecInt.resize(8,3);  //此时里面包含1,2,3,0,0,3,3,3元素。
-再执行vecInt.resize(2);  //此时里面包含1,2元素。
+执行 vecInt.resize(5);                //此时里面包含1,2,3,0,0元素。
+再执行 vecInt.resize(8,3);            //此时里面包含1,2,3,0,0,3,3,3元素。
+再执行 vecInt.resize(2);              //此时里面包含1,2元素。
 ```
 
 ### vector末尾的添加移除操作  
@@ -103,7 +103,7 @@ vecInt.pop_back();
 vec.at(idx); //返回索引idx所指的数据，如果idx越界，抛出out_of_range异常。
 vec[idx]; //返回索引idx所指的数据，越界时，运行直接报错
 vector<int> vecInt;    //假设包含1 ,3 ,5 ,7 ,9
-vecInt.at(2) == vecInt[2]  ;                 //5
+vecInt.at(2) == vecInt[2];  //5
 vecInt.at(2) = 8;  或  vecInt[2] = 8;
 vecInt 就包含 1, 3, 8, 7, 9值
 int iF = vector.front();       //iF==1
@@ -228,9 +228,9 @@ vecA.insert(vecA.begin(), vecB.begin() , vecB.end() );
 简单案例:删除区间内的元素
 
 ```c++
-vecInt是用vector<int>声明的容器，现已包含按顺序的1,3,5,6,9元素。
-vector<int>::iteratoritBegin=vecInt.begin()+1;
-vector<int>::iteratoritEnd=vecInt.begin()+2;
+// vecInt是用vector<int>声明的容器，现已包含按顺序的1,3,5,6,9元素。
+vector<int>::iterator itBegin=vecInt.begin()+1;
+vector<int>::iterator itEnd=vecInt.begin()+2;
 vecInt.erase(itBegin,itEnd);
 //此时容器vecInt包含按顺序的1,6,9三个元素。
 ```

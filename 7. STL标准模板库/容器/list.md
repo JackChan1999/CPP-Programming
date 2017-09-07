@@ -1,16 +1,16 @@
 ### list简介
 - list是一个双向链表容器，可高效地进行插入删除元素。
 - list不可以随机存取元素，所以不支持at.(pos)函数与[]操作符。It++(ok) it+5(err)
-- \#include <list>  
+- \#include&lt;list>  
 
 ### list对象的默认构造
 
-list采用采用模板类实现,对象的默认构造形式：list<T>lstT;  如：
+list采用采用模板类实现,对象的默认构造形式：list&lt;T>lstT;  如：
 
 ```C++
-list<int> lstInt;            //定义一个存放int的list容器。
+list<int> lstInt;         //定义一个存放int的list容器。
 list<float> lstFloat;     //定义一个存放float的list容器。
-list<string> lstString;     //定义一个存放string的list容器。
+list<string> lstString;   //定义一个存放string的list容器。
 ...                                   
 //尖括号内还可以设置指针类型或自定义类型。
 ```
@@ -55,9 +55,9 @@ lstInt.push_back(5);
 lstInt.push_back(7);
 lstInt.push_back(9);
 intiFront = lstInt.front(); //1
-intiBack = lstInt.back();            //9
-lstInt.front()= 11;                       //11
-lstInt.back()= 19;                       //19
+intiBack = lstInt.back();   //9
+lstInt.front()= 11;         //11
+lstInt.back()= 19;          //19
 ```
 
 ### list与迭代器
@@ -78,15 +78,14 @@ lstInt.push_back(7);
 lstInt.push_back(9);
 for(list<int>::iterator it=lstInt.begin(); it!=lstInt.end(); ++it)
 {
-cout<< *it;
-cout<< " ";
+	cout<< *it;
+	cout<< " ";
 }
 for(list<int>::reverse_iterator rit=lstInt.rbegin(); rit!=lstInt.rend();++rit)
-
-   {
-             cout<< *rit;
-             cout<< " ";
-   }
+{
+	cout<< *rit;
+	cout<< " ";
+}
 ```
 ### list对象的带参数构造
 
@@ -97,15 +96,15 @@ for(list<int>::reverse_iterator rit=lstInt.rbegin(); rit!=lstInt.rend();++rit)
 | list(const list &lst) | 拷贝构造函数                                   |
 
 ```C++
-  list<int>lstIntA;
-  lstIntA.push_back(1);
-  lstIntA.push_back(3);
-  lstIntA.push_back(5);
-  lstIntA.push_back(7);
-  lstIntA.push_back(9);
-  list<int>lstIntB(lstIntA.begin(),lstIntA.end());          //13 5 7 9
-  list<int>lstIntC(5,8);                                                                 //88 8 8 8 
-  list<int>lstIntD(lstIntA);                                                //13 5 7 9
+list<int>lstIntA;
+lstIntA.push_back(1);
+lstIntA.push_back(3);
+lstIntA.push_back(5);
+lstIntA.push_back(7);
+lstIntA.push_back(9);
+list<int>lstIntB(lstIntA.begin(),lstIntA.end());   //13 5 7 9
+list<int>lstIntC(5,8);                             //88 8 8 8 
+list<int>lstIntD(lstIntA);                         //13 5 7 9
 ```
 ### list的赋值
 
@@ -118,15 +117,15 @@ for(list<int>::reverse_iterator rit=lstInt.rbegin(); rit!=lstInt.rend();++rit)
 
 ```C++
 list<int>lstIntA,lstIntB,lstIntC,lstIntD;
-  lstIntA.push_back(1);
-  lstIntA.push_back(3);
-  lstIntA.push_back(5);
-  lstIntA.push_back(7);
-  lstIntA.push_back(9);
-  lstIntB.assign(lstIntA.begin(),lstIntA.end());             //1 3 5 7 9
-  lstIntC.assign(5,8);                                                           //88 8 8 8
-  lstIntD= lstIntA;                                                               //13 5 7 9
-  lstIntC.swap(lstIntD);                                                      //互换
+lstIntA.push_back(1);
+lstIntA.push_back(3);
+lstIntA.push_back(5);
+lstIntA.push_back(7);
+lstIntA.push_back(9);
+lstIntB.assign(lstIntA.begin(),lstIntA.end()); //1 3 5 7 9
+lstIntC.assign(5,8);                           //88 8 8 8
+lstIntD= lstIntA;                              //13 5 7 9
+lstIntC.swap(lstIntD);                         //互换
 ```
 
 ### list的大小
@@ -140,16 +139,16 @@ list<int>lstIntA,lstIntB,lstIntC,lstIntD;
 
 ```C++
 list<int>lstIntA;
-  lstIntA.push_back(1);
-  lstIntA.push_back(3);
-  lstIntA.push_back(5);
-  if(!lstIntA.empty())
-  {
-  intiSize = lstIntA.size();             //3
-  lstIntA.resize(5);                         //1 3 5 0 0
-  lstIntA.resize(7,1);                      //1 3 5 0 0 1 1
-  lstIntA.resize(2);                         //1 3
-  }
+lstIntA.push_back(1);
+lstIntA.push_back(3);
+lstIntA.push_back(5);
+if(!lstIntA.empty())
+{
+    intiSize = lstIntA.size(); //3
+    lstIntA.resize(5);         //1 3 5 0 0
+    lstIntA.resize(7,1);       //1 3 5 0 0 1 1
+    lstIntA.resize(2);         //1 3
+}
 ```
 ### list的插入
 
@@ -160,20 +159,20 @@ list<int>lstIntA;
 | insert(pos,beg,end) | 在pos位置插入[beg,end)区间的数据，无返回值  |
 
 ```C++
-  list<int>lstA;
-  list<int>lstB;
-  lstA.push_back(1);
-  lstA.push_back(3);
-  lstA.push_back(5);
-  lstA.push_back(7);
-  lstA.push_back(9);
-  lstB.push_back(2);
-  lstB.push_back(4);
-  lstB.push_back(6);
-  lstB.push_back(8);
-  lstA.insert(lstA.begin(),11);              //{11, 1, 3, 5, 7, 9}
-  lstA.insert(++lstA.begin(),2,33);                 //{11,33,33,1,3,5,7,9}
-  lstA.insert(lstA.begin(), lstB.begin() , lstB.end() ); //{2,4,6,8,11,33,33,1,3,5,7,9}
+list<int>lstA;
+list<int>lstB;
+lstA.push_back(1);
+lstA.push_back(3);
+lstA.push_back(5);
+lstA.push_back(7);
+lstA.push_back(9);
+lstB.push_back(2);
+lstB.push_back(4);
+lstB.push_back(6);
+lstB.push_back(8);
+lstA.insert(lstA.begin(),11);              //{11, 1, 3, 5, 7, 9}
+lstA.insert(++lstA.begin(),2,33);          //{11,33,33,1,3,5,7,9}
+lstA.insert(lstA.begin(), lstB.begin() , lstB.end() ); //{2,4,6,8,11,33,33,1,3,5,7,9}
 ```
 
 ### list的删除
@@ -188,33 +187,37 @@ list<int>lstIntA;
 删除区间内的元素
 
 ```C++
-lstInt是用list<int>声明的容器，现已包含按顺序的1,3,5,6,9元素。
-list<int>::iteratoritBegin=lstInt.begin();
-++ itBegin;
-list<int>::iteratoritEnd=lstInt.begin();
-++ itEnd;
-++ itEnd;
-++ itEnd;
-lstInt.erase(itBegin,itEnd);
-//此时容器lstInt包含按顺序的1,6,9三个元素。
-假设 lstInt 包含1,3,2,3,3,3,4,3,5,3，删除容器中等于3的元素的方法一
-for(list<int>::iteratorit=lstInt.being(); it!=lstInt.end(); )   //小括号里不需写  ++it
-{
-if(*it == 3)
-{
- it  =  lstInt.erase(it);       //以迭代器为参数，删除元素3，并把数据删除后的下一个元素位置返回给迭代器。
-  //此时，不执行  ++it
- }
-else
- {
+// lstInt是用list<int>声明的容器，现已包含按顺序的1,3,5,6,9元素。
 
-++it;
- }
+list<int>::iterator itBegin = lstInt.begin();
+++itBegin;
+list<int>::iterator itEnd = lstInt.begin();
+++itEnd;
+++itEnd;
+++itEnd;
+lstInt.erase(itBegin,itEnd);
+
+// 此时容器lstInt包含按顺序的1,6,9三个元素。
+// 假设 lstInt 包含1,3,2,3,3,3,4,3,5,3，删除容器中等于3的元素的方法一
+
+for(list<int>::iterator it=lstInt.being(); it!=lstInt.end();)   //小括号里不需写 ++it
+{
+    if(*it == 3)
+    {   //以迭代器为参数，删除元素3，并把数据删除后的下一个元素位置返回给迭代器。
+        it  =  lstInt.erase(it);       
+        //此时，不执行 ++it
+    }
+    else
+    {
+        ++it;
+    }
 }
-删除容器中等于3的元素的方法二
+
+// 删除容器中等于3的元素的方法二
 lstInt.remove(3);
-删除lstInt的所有元素
-lstInt.clear();                      //容器为空
+
+// 删除lstInt的所有元素
+lstInt.clear();  //容器为空
 ```
 
 ### list的反序排列
@@ -226,12 +229,12 @@ lstInt.clear();                      //容器为空
 ```C++
 list<int>lstA;
       
-     lstA.push_back(1);
-     lstA.push_back(3);
-     lstA.push_back(5);
-     lstA.push_back(7);
-     lstA.push_back(9);
-     lstA.reverse();                    //9 7 5 3 1
+lstA.push_back(1);
+lstA.push_back(3);
+lstA.push_back(5);
+lstA.push_back(7);
+lstA.push_back(9);
+lstA.reverse();   //9 7 5 3 1
 ```
 
 ### list常用函数
