@@ -35,7 +35,7 @@ public:
 	int operator<(const MyString& s);
 	int operator>(const MyString& s);
 
-	//把类的指针 露出来
+	//把类的指针露出来
 public:
 	char *c_str()
 	{
@@ -128,13 +128,13 @@ MyString::~MyString()
 // s4 = "s2222";
 MyString& MyString::operator=(const char *p)
 {
-	//1 旧内存释放掉
+	//1.旧内存释放掉
 	if (m_p != NULL)
 	{
 		delete [] m_p;
 		m_len = 0;
 	}
-	//2 根据p分配内存
+	//2.根据p分配内存
 	
 	if (p == NULL)
 	{
@@ -154,13 +154,13 @@ MyString& MyString::operator=(const char *p)
 // s4 = s2;
 MyString& MyString::operator=(const MyString &s)
 {
-	//1 旧内存释放掉
+	//1.旧内存释放掉
 	if (m_p != NULL)
 	{
 		delete [] m_p;
 		m_len = 0;
 	}
-	//2 根据s分配内存
+	//2.根据s分配内存
 	m_len = s.m_len;
 	m_p = new char[m_len + 1];
 	strcpy(m_p, s.m_p);
@@ -244,7 +244,7 @@ int MyString::operator>(const MyString& s)
 
 ### MyString_Test.cpp
 
-```C++
+```c++
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "MyString.h"
@@ -258,7 +258,7 @@ void main01()
 	MyString s3 = s2;
 	MyString s4 = "s4444444444";
 
-	//测试运算符重载 和 重载[]
+	//测试运算符重载和重载[]
 	//=
 
 	s4 = s2;
