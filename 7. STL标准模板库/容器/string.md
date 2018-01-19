@@ -27,7 +27,7 @@ string(const string &str); //构造一个与str一样的string。如strings1(s2)
 
 // 带参数的构造函数
 string(const char *s);    //用字符串s初始化
-string(int n,char c);    //用n个字符c初始化
+string(int n,char c);     //用n个字符c初始化
 ```
 ### string的存取字符操作
 string类的字符操作：
@@ -135,31 +135,31 @@ void swap(string &s2);    //交换当前字符串与s2的值
 //4 字符串的查找和替换
 void main()
 {
-         strings1 = "wbm hello wbm 111 wbm 222 wbm 333";
-         size_tindex = s1.find("wbm", 0);
-         cout<< "index: " << index; 
-         //求itcast出现的次数
-         size_toffindex = s1.find("wbm", 0);
-         while(offindex != string::npos)
-         {
-               cout<< "在下标index: " << offindex << "找到wbm\n";
-               offindex= offindex + 1;
-               offindex= s1.find("wbm", offindex);
-         }
-         //替换 
-         strings2 = "wbm hello wbm 111 wbm 222 wbm 333";
-         s2.replace(0,3, "wbm");
-         cout<< s2 << endl;
-         //求itcast出现的次数
-         offindex= s2.find("wbm", 0);
-         while(offindex != string::npos)
-         {
-              cout<< "在下标index: " << offindex << "找到wbm\n";
-              s2.replace(offindex,3, "WBM");
-              offindex= offindex + 1;
-              offindex= s1.find("wbm", offindex);
-         }
-         cout<< "替换以后的s2：" << s2 << endl; 
+	strings1 = "wbm hello wbm 111 wbm 222 wbm 333";
+	size_tindex = s1.find("wbm", 0);
+	cout<< "index: " << index; 
+	//求itcast出现的次数
+	size_toffindex = s1.find("wbm", 0);
+	while(offindex != string::npos)
+	{
+	      cout<< "在下标index: " << offindex << "找到wbm\n";
+	      offindex= offindex + 1;
+	      offindex= s1.find("wbm", offindex);
+	}
+	//替换 
+	strings2 = "wbm hello wbm 111 wbm 222 wbm 333";
+	s2.replace(0,3, "wbm");
+	cout<< s2 << endl;
+	//求itcast出现的次数
+	offindex= s2.find("wbm", 0);
+	while(offindex != string::npos)
+	{
+	     cout<< "在下标index: " << offindex << "找到wbm\n";
+	     s2.replace(offindex,3, "WBM");
+	     offindex= offindex + 1;
+	     offindex= s1.find("wbm", offindex);
+	}
+	cout<< "替换以后的s2：" << s2 << endl; 
 }
 ```
 
@@ -231,7 +231,7 @@ void main()
 
 ![1500122371839](images/1500122371839.png)
 
-```C++
+```c++
 #include <iostream>
 #include "string"
 #include "algorithm"

@@ -4,7 +4,7 @@
 - deque在接口上和vector非常相似，在许多操作的地方可以直接替换。
 - deque可以随机存取元素，支持索引值直接存取，用[]操作符或at()方法
 - deque头部和尾部添加或移除元素都非常快速。但是在中部安插元素或移除元素比较费时。
-- \#include <deque>
+- \#include &lt;deque>
 
 ### deque对象的默认构造
 
@@ -59,14 +59,14 @@ deqInt.push_back(3);
 deqInt.push_back(5);
 deqInt.push_back(7);
 deqInt.push_back(9);
-intiA = deqInt.at(0);                  //1
-intiB = deqInt[1];                       //3
-deqInt.at(0)= 99;                       //99
-deqInt[1]= 88;                   //88
-intiFront = deqInt.front();        //99
+intiA = deqInt.at(0);             //1
+intiB = deqInt[1];                //3
+deqInt.at(0)= 99;                 //99
+deqInt[1]= 88;                    //88
+intiFront = deqInt.front();       //99
 intiBack = deqInt.back();         //9
-deqInt.front()= 77;                    //77
-deqInt.back()= 66;                    //66
+deqInt.front()= 77;               //77
+deqInt.back()= 66;                //66
 ```
 
 ### deque与迭代器
@@ -115,7 +115,7 @@ deqIntA.push_back(5);
 deqIntA.push_back(7);
 deqIntA.push_back(9);
 deque<int>deqIntB(deqIntA.begin(),deqIntA.end()); //13 5 7 9
-deque<int>deqIntC(5,8);                                                                 //88 8 8 8
+deque<int>deqIntC(5,8);    //88 8 8 8
 deque<int>deqIntD(deqIntA);//13 5 7 9
 ```
 
@@ -137,9 +137,9 @@ deqIntA.push_back(7);
 deqIntA.push_back(9);
 deqIntB.assign(deqIntA.begin(),deqIntA.end());     // 1 3 5 7 9
                    
-deqIntC.assign(5,8);                                                        //88 8 8 8
-deqIntD= deqIntA;                                                         //13 5 7 9
-deqIntC.swap(deqIntD);                                                //互换
+deqIntC.assign(5,8);                               //88 8 8 8
+deqIntD= deqIntA;                                  //13 5 7 9
+deqIntC.swap(deqIntD);                             //互换
 ```
 
 ### deque的大小
@@ -159,9 +159,9 @@ deqIntA.push_back(5);
 intiSize = deqIntA.size();  //3
 if(!deqIntA.empty())
 {
-deqIntA.resize(5);             //1 3 5 0 0
-deqIntA.resize(7,1); //1 3 5 0 0 1 1
-deqIntA.resize(2);             //1 3
+deqIntA.resize(5);          //1 3 5 0 0
+deqIntA.resize(7,1);        //1 3 5 0 0 1 1
+deqIntA.resize(2);          //1 3
 }
 ```
 
@@ -185,8 +185,8 @@ deqB.push_back(6);
 deqB.push_back(8);
 
 deqA.insert(deqA.begin(),11);                 //{11, 1, 3, 5, 7, 9}
-deqA.insert(deqA.begin()+1,2,33);           //{11,33,33,1,3,5,7,9}
-deqA.insert(deqA.begin(), deqB.begin() , deqB.end() );         //{2,4,6,8,11,33,33,1,3,5,7,9}
+deqA.insert(deqA.begin()+1,2,33);             //{11,33,33,1,3,5,7,9}
+deqA.insert(deqA.begin(), deqB.begin() , deqB.end() ); //{2,4,6,8,11,33,33,1,3,5,7,9}
 ```
 ### deque的删除
 
@@ -205,7 +205,7 @@ for(deque<int>::iterator it=deqInt.being();it!=deqInt.end(); )    //小括号里
 {
   if(*it == 3)
    {
-       it  =  deqInt.erase(it);       //以迭代器为参数，删除元素3，并把数据删除后的下一个元素位置返回给迭代器。
+       it  =  deqInt.erase(it); //以迭代器为参数，删除元素3，并把数据删除后的下一个元素位置返回给迭代器。
         //此时，不执行  ++it；  
    }
   else
@@ -214,7 +214,7 @@ for(deque<int>::iterator it=deqInt.being();it!=deqInt.end(); )    //小括号里
    }
 }
 //删除deqInt的所有元素
-deqInt.clear();                    //容器为空
+deqInt.clear();  //容器为空
 ```
 ### deque常用函数
 

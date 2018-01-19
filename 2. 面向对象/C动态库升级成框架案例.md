@@ -470,7 +470,7 @@ extern "C" {
 #endif  /* _INC_Demo01_H */
 ```
 
-### test
+### test.c
 
 ```c
 #include "stdio.h"
@@ -555,8 +555,6 @@ End:
 		printf("func cltSocketDestory():%d", rv);
 		return rv;
 	}
-
-	printf("hello....\n");
 
 	//system("pause");
 	return 0;

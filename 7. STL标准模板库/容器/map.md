@@ -4,17 +4,17 @@
 - map的具体实现采用红黑树变体的平衡二叉树的数据结构。在插入操作和删除操作上比vector快。
 - map可以直接存取key所对应的value，支持[]操作符，如map[key]=value。
 - multimap与map的区别：map支持唯一键值，每个键只能出现一次；而multimap中相同键可以出现多次。multimap不支持[]操作符。
-- \#include <map>  
+- \#include&lt;map>  
 
 ### map/multimap对象的默认构造
-```C++
-  map/multimap采用模板类实现，对象的默认构造形式：
-  map<T1,T2> mapTT; 
-  multimap<T1,T2>  multimapTT; 
-  如：
-  map<int, char> mapA;
-  map<string,float> mapB;
-  //其中T1,T2还可以用各种指针类型或自定义类型
+```c++
+// map/multimap采用模板类实现，对象的默认构造形式：
+map<T1,T2> mapTT; 
+multimap<T1,T2>  multimapTT; 
+
+map<int, char> mapA;
+map<string,float> mapB;
+//其中T1,T2还可以用各种指针类型或自定义类型
 ```
 
 ### map的插入与迭代器
@@ -39,13 +39,13 @@
 - string strName = mapStu[2];  //取操作或插入操作
 - 只有当mapStu存在2这个键时才是正确的取操作，否则会自动插入一个实例，键为2，值为初始化值。
 
-```C++
+```c++
 map<int, string> mapA;
 pair< map<int, string>::iterator, bool > pairResult =
-	mapA.insert( pair<int, string>( 3, "小张" ) ); // 插入方式1
+mapA.insert( pair<int, string>( 3, "小张" ) ); // 插入方式1
 int	iFirstFirst	= (pairResult.first)->first; // iFirst== 3;
 string	strFirstSecond	= (pairResult.first)->second; // strFirstSecond为"小张"
-bool	bSecond		= pairResult.second;
+bool bSecond = pairResult.second;
 // bSecond== true;
 mapA.insert( map<int, string>::value_type( 1, "小李" ) ); // 插入方式2
 mapA[3] = "小刘";  // 修改value
@@ -73,7 +73,7 @@ for ( map<int, string>::iterator it = mapA.begin(); it != mapA.end(); ++it )
 
 ### map对象的拷贝构造与赋值
 
-```C++
+```c++
 map(const map &mp); //拷贝构造函数
 map& operator=(const map &mp); //重载等号操作符
 map.swap(mp);  //交换两个集合容器
@@ -94,7 +94,7 @@ mapC.swap(mapA);  //交换
 
 - map.size(); //返回容器中元素的数目
 - map.empty();//判断容器是否为空
-```C++
+```c++
 map<int, string> mapA;
 mapA.insert( pair<int, string>( 3, "小张" ) );
 mapA.insert( pair<int, string>( 1, "小杨" ) );
@@ -108,26 +108,28 @@ if ( mapA.empty() )
 
 ### map的删除
 
-- map.clear();                 //删除所有元素
+- map.clear();    //删除所有元素
 - map.erase(pos); //删除pos迭代器所指的元素，返回下一个元素的迭代器。
 - map.erase(beg,end);     //删除区间[beg,end)的所有元素  ，返回下一个元素的迭代器。
 - map.erase(keyElem);     //删除容器中key为keyElem的对组。
 
-```C++
+```c++
 map<int, string> mapA;
 mapA.insert(pair<int,string>(3,"小张"));         
 mapA.insert(pair<int,string>(1,"小杨"));         
 mapA.insert(pair<int,string>(7,"小赵"));         
-mapA.insert(pair<int,string>(5,"小王"));         
+mapA.insert(pair<int,string>(5,"小王"));   
+
 //删除区间内的元素
-map<int,string>::iteratoritBegin=mapA.begin();
+map<int,string>::iterator itBegin = mapA.begin();
 ++itBegin;
 ++itBegin;
-map<int,string>::iteratoritEnd=mapA.end();
+map<int,string>::iterator itEnd = mapA.end();
 //此时容器mapA包含按顺序的{1,"小杨"}{3,"小张"}两个元素。
 mapA.erase(itBegin,itEnd);  
 mapA.insert(pair<int,string>(7,"小赵"));         
-mapA.insert(pair<int,string>(5,"小王"));         
+mapA.insert(pair<int,string>(5,"小王"));      
+
 //删除容器中第一个元素
 //此时容器mapA包含了按顺序的{3,"小张"}{5,"小王"}{7,"小赵"}三个元素
 mapA.erase(mapA.begin());             
@@ -144,14 +146,14 @@ mapA.clear();//容器为空
 
 ### map的基本操作
 
-```C++
+```c++
 #include <iostream>
 #include "map"
 #include "string"
 using namespace std;
 
 //map元素的添加/遍历/删除基本操作
-void main1101()
+void main1()
 {
 	map<int, string> map1;
 
@@ -192,7 +194,7 @@ void main1101()
 //插入的四种方法异同
 //前三种方法，返回值为pair<iterator,bool> 若key已经存在 则报错
 //方法四，若key已经存在,则修改									
-void main1102()
+void main2()
 {
 	map<int, string> map1;
 	//typedef pair<iterator, bool> _Pairib;
@@ -241,7 +243,7 @@ void main1102()
 	cout << "遍历结束" << endl;
 }
 
-void main1103()
+void main3()
 {
 	map<int, string> map1;
 
@@ -306,9 +308,9 @@ void main1103()
 }
 void main1104()
 {
-	//main1101();
-	//main1102();
-	main1103();
+	//main1();
+	//main2();
+	main3();
 	system("pause");
 	return ;
 }
@@ -321,7 +323,7 @@ void main1104()
 - 通过 multimap进行信息的插入、保存、显示
 - 分部门显示员工信息 
 
-```C++
+```c++
 #include <iostream>
 #include "map"
 #include "string"
@@ -336,7 +338,7 @@ public:
 	double	saly;
 };
 
-void main1201()
+void main1()
 {
 	Person p1, p2, p3, p4, p5;
 
@@ -389,7 +391,7 @@ void main1201()
 }
 
 //age = 32修改成 name32
-void main1202()
+void main2()
 {
 	Person p1, p2, p3, p4, p5;
 
@@ -436,10 +438,10 @@ void main1202()
 	}
 }
 
-void main1212()
+void main()
 {
-	//main1201();
-	main1202();
+	//main1();
+	main2();
 	system("pause");
 	return ;
 }

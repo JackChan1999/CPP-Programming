@@ -6,19 +6,19 @@ typora-copy-images-to: images
 
 函数对象（仿函数）：
 
-重载函数调用操作符的类，其对象常称为函数对象（functionobject），即它们是行为类似函数的对象。一个类对象，表现出一个函数的特征，就是通过“对象名+(参数列表)”的方式使用一个类对象，如果没有上下文，完全可以把它看作一个函数对待。
+重载函数调用操作符的类，其对象常称为函数对象（function object），即它们是行为类似函数的对象。一个类对象，表现出一个函数的特征，就是通过“对象名+(参数列表)”的方式使用一个类对象，如果没有上下文，完全可以把它看作一个函数对待。
 
 这是通过重载类的operator()来实现的。
 
 “在标准库中，函数对象被广泛地使用以获得弹性”，标准库中的很多算法都可以使用函数对象或者函数来作为自定的回调行为；
 
-谓词(predicate)：
+谓词(predicate)：是一个可调用的表达式，返回结果是一个可作条件的值。
 
-一元函数对象：函数参数1个；
-二元函数对象：函数参数2个；
-一元谓词，函数参数1个，函数返回值是bool类型，可以作为一个判断式。
-谓词可以是一个仿函数，也可以是一个回调函数。
-二元谓词，函数参数2个，函数返回值是bool类型。
+- 一元函数对象：函数参数1个；
+- 二元函数对象：函数参数2个；
+- 一元谓词，函数参数1个，函数返回值是bool类型，可以作为一个判断式。
+- 二元谓词，函数参数2个，函数返回值是bool类型。
+- 谓词可以是一个仿函数，也可以是一个回调函数。
 
 一元谓词函数举例如下
 
@@ -53,17 +53,18 @@ bool isShorter(const string &s1, conststring &s2)
 ### 一元函数对象案例
 
 ```C++
-//1普通类 重载 函数调用操作符
+//普通类重载函数调用操作符
 template <typename T>
-void FuncShowElemt(T &t)  //普通函数 不能像 仿函数那样记录状态
+void FuncShowElemt(T &t)  //普通函数不能像仿函数那样记录状态
 {
     cout<< t << " ";
 };
+
 void showChar(char &t)
 {
     cout<< t << " ";
 }
-//函数模板 重载 函数调用操作符
+//函数模板重载函数调用操作符
 template <typename T>
 class ShowElemt
 {
@@ -72,24 +73,24 @@ public:
     {
          n= 0;
     }
-    voidoperator()(T &t)
+    void operator()(T &t)
     {
          n++;
          cout<< t << " ";
     }
-    voidprintCount()
+    void printCount()
     {
          cout<< n << endl;
     }
 public:
-    intn;
+    int n;
 };
-//1 函数对象 基本使用
-void main11()
+// 函数对象基本使用
+void main()
 {
     inta = 100;
     FuncShowElemt<int>(a);//普通的函数调用
-    ShowElemt<int>showElemt; //函数对象
+    ShowElemt<int> showElemt; //函数对象
     showElemt(a);//函数对象调用 
 }
 ```
@@ -106,13 +107,13 @@ public:
     {
          this->divisor= divisor;
     }
-    booloperator()(T &t)
+    bool operator()(T &t)
     {
          return(t%divisor == 0);
     }
 protected:
 private:
-    Tdivisor;
+    T divisor;
 };
 void main13()
 {
@@ -121,11 +122,11 @@ void main13()
     {
          v2.push_back(i);
     }
-    vector<int>::iteratorit;
+    vector<int>::iterator it;
     inta = 4;
     Isdiv<int>mydiv(a);
     //_InIt find_if(_InIt _First, _InIt _Last, _Pr _Pred)   //返回的是迭代器
-    it= find_if(v2.begin(), v2.end(), Isdiv<int>(4));
+    it = find_if(v2.begin(), v2.end(), Isdiv<int>(4));
     if(it != v2.end())
     {
          cout<< "第一个被4整除的数是：" << *it << endl;
@@ -195,9 +196,9 @@ void main()
 template <typename T>
 struct SumAdd
 {
-    Toperator()(T &t1, T &t2)
+    T operator()(T &t1, T &t2)
     {
-         returnt1 + t2;
+         return t1 + t2;
     }
 };
 template <typename T>
@@ -542,8 +543,8 @@ Ires= UnaryFunc(negate<int>(),Ival1);
 ```C++
 void main42()
 {
-		equal_to<string> stringEqual;
-		sres = stringEqual(sval1,sval2);
+	equal_to<string> stringEqual;
+	sres = stringEqual(sval1,sval2);
 		
     vector<string>v1;
     v1.push_back("bbb");
@@ -563,17 +564,17 @@ void main42()
 | 函数对象                 | 功能描述 |
 | -------------------- | ---- |
 | logical_and&lt;Type> | 逻辑与  |
-| logical_or<Type>     | 逻辑或  |
+| logical_or&lt;Type>  | 逻辑或  |
 | logical_not&lt;Type> | 逻辑非  |
 
-```
+```c++
 logical_and<int> indAnd;
 ires = intAnd(ival1,ival2);
-dres=BinaryFunc( logical_and<double>(),dval1,dval2);
+dres = BinaryFunc( logical_and<double>(),dval1,dval2);
 
 logical_not<int> IntNot;
 Ires = IntNot(ival1);
-Dres=UnaryFunc( logical_not<double>,dval1);
+Dres = UnaryFunc( logical_not<double>,dval1);
 ```
 
 ### 函数适配器
